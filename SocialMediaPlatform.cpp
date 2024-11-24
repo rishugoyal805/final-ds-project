@@ -1057,8 +1057,8 @@ void showUserMenu()
     cout << "6. View Public Posts" << endl;
     cout << "7. View all users" << endl;
     cout << "8. Add Friend" << endl;
-    cout << "9. Send Message" << endl;
-    cout << "10. View Messages" << endl;
+    cout << "9. Messages" << endl;
+    cout << "10. Group Messages" << endl;
     cout << "11. Friends" << endl;
     cout << "12. Log Out" << endl;
 }
@@ -1177,27 +1177,6 @@ int main()
                     }
                     else if (userChoice == 9)
                     {
-                        friendSystem.viewFriends(currentUser);
-                        string recipientUsername, message;
-                        cout << "Enter recipient's username: ";
-                        cin >> recipientUsername;
-                        User *recipient = userManagement.findUserByUsername(recipientUsername);
-                        if (recipient)
-                        {
-                            cout << "Enter your message: ";
-                            cin.ignore();
-                            getline(cin, message);
-                            messagingSystem.sendMessage(currentUser, recipient, message);
-                            sleep(1);
-                        }
-                        else
-                        {
-                            cout << "User not found!" << endl;
-                            sleep(1);
-                        }
-                    }
-                    else if (userChoice == 10)
-                    {
                         int messageChoice;
                         string recipientUsername; // Declare recipientUsername here
                         string message;           // Declare message here
@@ -1285,7 +1264,7 @@ int main()
                             }
                         } while (messageChoice != 0);
                     }
-                    else if (userChoice == 11) // Group Messaging
+                    else if (userChoice == 10) // Group Messaging
                     {
                         int groupChoice;
                         do
@@ -1331,8 +1310,7 @@ int main()
                             }
                         } while (groupChoice != 0);
                     }
-
-                    else if(userChoice == 12){
+                    else if(userChoice == 11){
                         showFriendMenu();
                         int choice;
                         cin >> choice;
